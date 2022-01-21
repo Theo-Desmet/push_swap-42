@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 10:48:45 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/20 07:43:28 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/21 08:59:21 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_doublons_split(char **tab);
 int	ft_search_med(t_pile **pile, int size);
 int	ft_rotate_sort(t_pile **pile, int j, int val);
 int	ft_rotate_sort_temp(t_pile **pile, int val);
-int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, s_index *cnt);
+int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt);
 int	ft_check_med(t_pile **pile, t_pile *check, int size);
 int	check_doublons(char *str, int argc, char **argv, int i);
 

@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 07:55:31 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/20 09:56:05 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/21 09:08:48 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,23 +96,16 @@ void	sort2(t_pile **pile, t_pile **pile_temp)
 {
 	s_index	*cnt;
 	t_pile	**pivot;
-	t_pile	*temp;
 
 	cnt = malloc(sizeof(s_index));
 	cnt->nb_s = 0;
 	cnt->nb_r = ft_pile_size(*pile);
 	cnt->nb_p = cnt->nb_r;
 	pivot = malloc(sizeof(t_pile));
+//	aff(pile);
 	while (cnt->nb_s < ft_pile_size(*pile))
 	{
-		cnt->nb_p = ft_push_pivot(pile, pile_temp, cnt);
-		if (cnt->nb_p > 1)
-		{
-			temp = ft_new_pile((*pile_temp)->val);
-			ft_push_pile(pivot, temp);
-		}
-		else if (!(*pivot) && (ft_pile_last(*pile))->val == (*pivot)->val)
-			free(ft_pop(pivot));
+		cnt->nb_p = ft_push_pivot(pile, pile_temp, pivot, cnt);
 		while (cnt->nb_p > 0)
 			ft_check_min(pile, pile_temp, pivot, cnt);
 		while (*pile_temp)
@@ -124,8 +117,11 @@ void	sort2(t_pile **pile, t_pile **pile_temp)
 			cnt->nb_p = ft_search_pivot(pile, (*pivot)->val);
 		if (cnt->nb_p > cnt->nb_r)
 			cnt->nb_p = cnt->nb_r;
+		
+//		aff(pile);
+//		aff(pivot);
 	}
-	ft_free_pile(pivot);
+	free(pivot);
 	free(cnt);
 }
 /*

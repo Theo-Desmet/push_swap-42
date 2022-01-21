@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 07:58:53 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/20 09:58:28 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/21 08:14:00 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_pile_size(t_pile *pile)
 
 void	ft_free_pile(t_pile **pile)
 {
+	if (!pile)
+		return ; 
 	while (*pile)
 		free(ft_pop(pile));
 	free(pile);

@@ -16,7 +16,7 @@ LIB_PATH = libft/
 
 CC = @clang
 
-CFLAGS = -g
+CFLAGS = -g -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
 

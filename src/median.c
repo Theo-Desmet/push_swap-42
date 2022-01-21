@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 08:56:26 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/19 16:29:18 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/21 09:07:12 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	ft_check_med(t_pile **pile, t_pile *check, int size)
 		return (1);
 }
 
-int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, s_index *cnt)
+int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt)
 {
-	int		pivot;
+	int		new_pivot;
 	int		i;
 	int		j;
 	t_pile	*temp;
@@ -61,15 +61,16 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, s_index *cnt)
 	if (!pile)
 		return (0);
 	temp = *pile;
-	pivot = ft_search_med(pile, cnt->nb_p);
-	if (cnt->nb_p == 1 || (pivot == (*pile)->val
+	new_pivot = ft_search_med(pile, cnt->nb_p);
+	if (cnt->nb_p == 1 || (new_pivot == (*pile)->val
 		&& ft_rotate_sort(pile, cnt->nb_r - 1, (*pile)->val)))
 	{
 		ft_rotate(pile, "ra\n");
+		free(ft_pop(pivot));
 		cnt->nb_s++;
 		return (0);
 	}
-	while (temp->val != pivot)
+	while (temp->val != new_pivot)
 	{
 		temp = temp->next;
 		i++;
@@ -80,6 +81,7 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, s_index *cnt)
 	ft_push(pile_temp, pile, "pb\n");
 	while (j-- > 0)
 		ft_reverse_rotate(pile, "rra\n");
+	ft_push_pile(pivot, ft_new_pile((*pile_temp)->val));
 	cnt->nb_r--;
 	cnt->nb_p--;
 	return (cnt->nb_p);
