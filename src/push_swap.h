@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 10:48:45 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/21 08:59:21 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/21 17:11:47 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_swap_ss(t_pile **pilea, t_pile **pileb);
 void	ft_push(t_pile **pile1, t_pile **pile2, char *str);
 void	ft_rotate_rr(t_pile **pilea, t_pile **pileb);
 void    quicksort(t_pile **pile, t_pile **pile_temp, int first, int last);
-void	ft_check_min(t_pile **pile, t_pile **pile_temp,
-		t_pile **pivot, s_index *cnt);
+void	ft_push_med(t_pile **pile, t_pile **pile_temp, int new_pivot, s_index *cnt);
+void	ft_check_min(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt);
 
 t_pile	*ft_new_pile(int nb);
 t_pile	*ft_pop(t_pile **pile);
