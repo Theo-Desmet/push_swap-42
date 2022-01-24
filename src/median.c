@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 08:56:26 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/21 17:11:48 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/24 09:17:24 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ void	ft_push_med(t_pile **pile, t_pile **pile_temp, int new_pivot, s_index *cnt)
 	while (temp->val != new_pivot)
 	{
 		temp = temp->next;
+		ft_rotate(pile, "ra\n");
 		i++;
 	}
-	while (i-- >= 0)
-	{	
-		ft_check_min(pile, temp, pivot, cnt);	
-	}
+	ft_push(pile_temp, pile, "pb\n");
+	while (i-- > 0)
+		ft_reverse_rotate(pile, "rra\n");
 }
