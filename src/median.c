@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 08:56:26 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/27 11:49:48 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/28 12:37:04 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,19 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 	temp = *pile;
 	size = cnt->nb_p;
 	new_pivot = ft_search_med(pile, cnt->nb_p);
-	if (cnt->nb_p == 1/* || (new_pivot == (*pile)->val
-		&& ft_rotate_sort(pile, cnt->nb_r - 1, (*pile)->val))*/)
+	/*if (ft_check_sort(pile, cnt))
+	{
+		while (cnt->nb_p)
+		{
+			ft_rotate(pile, "ra\n");
+			cnt->nb_s++;
+			cnt->nb_p--;
+			cnt->nb_r--;
+		}
+		free(ft_pop(pivot));
+		return (0);
+	}*/
+	if (cnt->nb_p == 1)
 	{
 		ft_rotate(pile, "ra\n");
 		free(ft_pop(pivot));
@@ -77,20 +88,31 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		free(ft_pop(pivot));
 		return (0);
 	}
-	if (!(*pile_temp) && !(*pivot) && cnt->nb_s == 0)
+	if (cnt->nb_p ==3)
+	{
+		ft_check_3_bis(pile,pile_temp, cnt);
+		free(ft_pop(pivot));
+		return (0);
+	}
+	if (!(*pile_temp))
 	{
 		while (size--)
 		{
 			if ((*pile)->val == new_pivot)
 			{
+				//ft_putstr("pivot\n");
 				ft_push_pile(pivot, ft_new_pile((*pile)->val));
 				ft_push(pile_temp, pile, "pb\n");
 				ft_rotate(pile_temp, "rb\n");
 			}
 			else if ((*pile)->val > new_pivot)
 			{
-				ft_rotate(pile, "ra\n");
+			/*	if (*pile_temp && (*pile_temp)->val < new_pivot / 2)
+					ft_rotate_rr(pile, pile_temp);
+				else
+					*/ft_rotate(pile, "ra\n");
 				cnt->nb_p--;
+				i++;
 			}
 			else
 				ft_push(pile_temp, pile, "pb\n");
@@ -99,18 +121,28 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		ft_reverse_rotate(pile_temp, "rrb\n");
 		//aff(pile);
 		//aff(pile_temp);
+		if (cnt->nb_s != 0)
+		{
+			while (i)
+			{
+				ft_reverse_rotate(pile, "rra\n");
+				i--;
+			}	
+		}	
 		new_pivot = ft_search_med(pile_temp, cnt->nb_p);
 		cnt->nb_r = cnt->nb_p;
 		size = cnt->nb_p;
-		while (cnt->nb_p > 2)
+		while (cnt->nb_p > 3)
 		{
 			while (size--)
 			{
 				if ((*pile_temp)->val == new_pivot)
 				{
+					//ft_putstr("pivot\n");
 					ft_push_pile(pivot, ft_new_pile((*pile_temp)->val));
 					ft_push(pile, pile_temp, "pa\n");
 					ft_rotate(pile, "ra\n");
+					cnt->nb_p--;
 				}
 				else if ((*pile_temp)->val > new_pivot)
 				{
@@ -122,7 +154,6 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 				cnt->nb_r--;
 			}
 			ft_reverse_rotate(pile, "rra\n");
-			ft_push(pile_temp, pile, "pb\n");
 			//aff(pile);
 			//aff(pile_temp);
 			new_pivot = ft_search_med(pile_temp, cnt->nb_p);
@@ -131,45 +162,5 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		}
 		return (0);
 	}
-	/*
-	else
-	{
-		while (temp->val != new_pivot)
-		{
-			temp = temp->next;
-			i++;
-		}
-		j = i;
-		while (i-- > 0)
-			ft_rotate(pile, "ra\n");
-		ft_push(pile_temp, pile, "pb\n");
-		while (j-- > 0)
-			ft_reverse_rotate(pile, "rra\n");
-		ft_push_pile(pivot, ft_new_pile((*pile_temp)->val));
-		cnt->nb_r--;
-		cnt->nb_p--;
-	}*/
-	while ((*pile)->val != new_pivot)
-	{	
-		if (ft_rotate_sort(pile, cnt->nb_r - 1, (*pile)->val) && ft_rotate_sort_temp(pile_temp, (*pile)->val))
-		{
-			ft_rotate(pile, "ra\n");
-			cnt->nb_s++;
-		}
-		else if ((*pile)->val > new_pivot)
-		{
-			ft_push(pile_temp, pile, "pb\n");
-			ft_rotate(pile_temp, "rb\n");
-			i++;
-		}
-		else
-			ft_push(pile_temp, pile, "pb\n");
-		cnt->nb_r--;
-		cnt->nb_p--;
-	}
-	ft_push_pile(pivot, ft_new_pile((*pile)->val));
-	ft_push(pile_temp, pile, "pb\n");
-	while (i-- > 0)
-		ft_reverse_rotate(pile_temp, "rrb\n");
 	return (cnt->nb_p);
 }

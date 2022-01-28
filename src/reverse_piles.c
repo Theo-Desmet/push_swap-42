@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 09:26:31 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/12 13:34:47 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/28 11:14:05 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ft_reverse_rotate(t_pile **pile, char *str)
 	t_pile	*last;
 	t_pile	*temp;
 
-	if (ft_pile_size(*pile) == 2)
+	if (ft_pile_size(pile) == 2)
 	{
 		ft_swap(pile, str);
 		return ;
 	}
-	if (pile && *pile && ft_pile_size(*pile) > 1)
+	if (pile && *pile && (*pile)->next)
 	{	
 		last = *pile;
 		while (last->next)

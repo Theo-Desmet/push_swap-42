@@ -6,21 +6,21 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 07:58:53 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/26 13:39:40 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/28 11:27:53 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_pile_size(t_pile *pile)
+int	ft_pile_size(t_pile **pile)
 {
 	t_pile	*temp;
 	int	i;
 
-	if (!pile)
+	if (!pile || !(*pile))
 		return (0);
 	i = 0;
-	temp = pile;
+	temp = *pile;
 	while (temp)
 	{
 		i++;
@@ -31,9 +31,7 @@ int	ft_pile_size(t_pile *pile)
 
 void	ft_free_pile(t_pile **pile)
 {
-	if (!pile)
-		return ; 
-	while (*pile)
+	while ((*pile))
 		free(ft_pop(pile));
 	free(pile);
 }
@@ -44,6 +42,7 @@ int	main(int argc, char **argv)
 	t_pile	**b;
 
 	b = malloc(sizeof(t_pile));
+	*b = NULL;
 	if (check_args(argc, argv) == 0)
 		return (0);
 	else
@@ -55,7 +54,7 @@ int	main(int argc, char **argv)
 		//ft_putstr("a: ");
 		//aff(a);
 	}
-	ft_free_pile(a);
 	ft_free_pile(b);
+	ft_free_pile(a);
 	return (0);
 }

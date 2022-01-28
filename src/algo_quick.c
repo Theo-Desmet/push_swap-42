@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:41:03 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/27 11:52:45 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/27 16:44:20 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_check_2_bis(t_pile **pile, s_index *cnt)
 	cnt->nb_p -= 2;
 	cnt->nb_s += 2;
 }
-/*
+
 void	ft_check_3(t_pile **a)
 {
 	if ((*a)->val < (*a)->next->val && (*a)->val < (*a)->next->next->val
@@ -142,7 +142,7 @@ void	ft_check_3_1_bis(t_pile **a, t_pile **b, s_index *cnt)
 	{
 		ft_rotate(a, "ra\n");
 		ft_swap(a, "sa\n");
-		ft_reverse_rotate(a, "ra\n");
+		ft_reverse_rotate(a, "rra\n");
 		ft_swap(a, "sa\n");
 		ft_rotate(a, "ra\n");
 		ft_rotate(a, "ra\n");
@@ -150,4 +150,30 @@ void	ft_check_3_1_bis(t_pile **a, t_pile **b, s_index *cnt)
 		return ;
 	}
 	cnt->nb_p=cnt->nb_r;
-}*/
+}
+
+int	ft_check_sort(t_pile **pile, s_index *cnt)
+{
+	int		i;
+	t_pile	*temp;
+	t_pile	*temp2;
+
+	if (!(*pile))
+		return (0);
+	i = 0;
+	temp = *pile;
+	temp2 = temp->next;
+	while (i < cnt->nb_p && cnt->nb_p > 1)
+	{
+		while (temp2)
+		{
+			if (temp->val > temp2->val)
+				return (0);
+			temp2 = temp2->next;
+		}
+		i++;
+		temp = temp->next;
+		temp2 = temp->next;
+	}
+	return (1);
+}

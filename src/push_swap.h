@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 10:48:45 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/27 08:34:03 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/01/28 10:28:16 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ struct s_index
 };
 
 void	ft_check_2_bis(t_pile **pile, s_index *cnt);
+void	ft_check_3_bis(t_pile **a, t_pile **b, s_index *cnt);
+void	ft_check_3_1_bis(t_pile **a, t_pile **b, s_index *cnt);
 void	aff(t_pile **pile);
 void	ft_free_pile(t_pile **pile);
 void	ft_swap(t_pile **pile, char *str);
@@ -55,13 +57,14 @@ t_pile 	**sort(t_pile **pile, t_pile **pile_temp);
 int	check_digit(char *str);
 int	ft_str_size(char *str);
 int	ft_atoi(const char *nptr);
-int	ft_pile_size(t_pile *pile);
+int	ft_pile_size(t_pile **pile);
 int	check_int(const char *nptr);
 int	ft_strcmp(char *s1, char *s2);
 int	check_args(int argc, char **argv);
 int	check_doublons_split(char **tab);
 int	ft_search_med(t_pile **pile, int size);
 int	ft_search_pivot(t_pile **pile, int pivot);
+int	ft_check_sort(t_pile **pile, s_index *cnt);
 int	ft_rotate_sort(t_pile **pile, int j, int val);
 int	ft_rotate_sort_temp(t_pile **pile, int val);
 int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt);
