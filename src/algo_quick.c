@@ -6,14 +6,17 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:41:03 by tdesmet           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/01/27 16:44:20 by tdesmet          ###   ########.fr       */
+=======
+/*   Updated: 2022/01/24 08:55:54 by tdesmet          ###   ########.fr       */
+>>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_check_min(t_pile **pile, t_pile **pile_temp,
-		t_pile **pivot, s_index *cnt)
+void	ft_check_min(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt)
 {
 
 	if (ft_rotate_sort(pile, cnt->nb_r - 1, (*pile)->val)

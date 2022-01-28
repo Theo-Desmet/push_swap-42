@@ -6,7 +6,11 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 08:56:26 by tdesmet           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/01/28 12:37:04 by tdesmet          ###   ########.fr       */
+=======
+/*   Updated: 2022/01/24 09:17:24 by tdesmet          ###   ########.fr       */
+>>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +57,13 @@ int	ft_check_med(t_pile **pile, t_pile *check, int size)
 int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt)
 {
 	int		new_pivot;
+<<<<<<< HEAD
 	int		size;
 	int		i;
+=======
+>>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 	t_pile	*temp;
 
-	i = 0;
 	if (!pile)
 		return (0);
 	temp = *pile;
@@ -82,6 +88,7 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		cnt->nb_s++;
 		return (0);
 	}
+<<<<<<< HEAD
 	if (cnt->nb_p ==2)
 	{
 		ft_check_2_bis(pile, cnt);
@@ -163,4 +170,32 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		return (0);
 	}
 	return (cnt->nb_p);
+=======
+	ft_push_med(pile, pile_temp, new_pivot, cnt);
+	ft_push_pile(pivot, ft_new_pile((*pile_temp)->val));
+	cnt->nb_r--;
+	cnt->nb_p--;
+	return (cnt->nb_p);
+}
+void	ft_push_med(t_pile **pile, t_pile **pile_temp, int new_pivot, s_index *cnt)
+{
+	int		i;
+	int		j;
+	t_pile	*temp;
+	
+	i = 0;
+	j = 0;
+	temp = *pile;
+	if (cnt->nb_s)
+		;
+	while (temp->val != new_pivot)
+	{
+		temp = temp->next;
+		ft_rotate(pile, "ra\n");
+		i++;
+	}
+	ft_push(pile_temp, pile, "pb\n");
+	while (i-- > 0)
+		ft_reverse_rotate(pile, "rra\n");
+>>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 }
