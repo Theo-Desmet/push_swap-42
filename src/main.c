@@ -6,11 +6,8 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 07:58:53 by tdesmet           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/28 11:27:53 by tdesmet          ###   ########.fr       */
-=======
+/*   Updated: 2022/01/31 15:29:01 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 09:00:04 by tdesmet          ###   ########.fr       */
->>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +49,9 @@ int	main(int argc, char **argv)
 	else
 	{
 		a = ft_create_pile(argc, argv);
-		//ft_putstr("a: ");
-		aff(a);
+		//aff(a);
 		sort2(a, b);
-		//ft_putstr("a: ");
-		aff(a);
+		//aff(a);
 	}
 	ft_free_pile(b);
 	ft_free_pile(a);

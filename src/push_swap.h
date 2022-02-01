@@ -6,11 +6,8 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 10:48:45 by tdesmet           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/28 10:28:16 by tdesmet          ###   ########.fr       */
-=======
+/*   Updated: 2022/01/31 14:11:02 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/21 17:11:47 by tdesmet          ###   ########.fr       */
->>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +33,11 @@ struct s_index
 	int	nb_p;
 };
 
-void	ft_check_2_bis(t_pile **pile, s_index *cnt);
-void	ft_check_3_bis(t_pile **a, t_pile **b, s_index *cnt);
-void	ft_check_3_1_bis(t_pile **a, t_pile **b, s_index *cnt);
+void	ft_check_3(t_pile **a);
+void	ft_check_4(t_pile **a, t_pile **b);
+void	ft_check_2_bis(t_pile **pile);
+void	ft_check_3_bis(t_pile **a, t_pile **b);
+void	ft_check_3_1_bis(t_pile **a, t_pile **b);
 void	aff(t_pile **pile);
 void	ft_free_pile(t_pile **pile);
 void	ft_swap(t_pile **pile, char *str);
@@ -55,6 +54,7 @@ void	ft_check_min(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 
 t_pile	*ft_new_pile(int nb);
 t_pile	*ft_pop(t_pile **pile);
+t_pile	*ft_pile_last(t_pile *pile);
 t_pile	**ft_create_pile(int cont, char **str);
 t_pile 	**sort(t_pile **pile, t_pile **pile_temp);
 
@@ -69,7 +69,7 @@ int	check_doublons_split(char **tab);
 int	ft_search_med(t_pile **pile, int size);
 int	ft_search_pivot(t_pile **pile, int pivot);
 int	ft_check_sort(t_pile **pile, s_index *cnt);
-int	ft_rotate_sort(t_pile **pile, int j, int val);
+int	ft_rotate_sort(t_pile *pile, int j, int val);
 int	ft_rotate_sort_temp(t_pile **pile, int val);
 int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt);
 int	ft_check_med(t_pile **pile, t_pile *check, int size);

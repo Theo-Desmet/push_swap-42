@@ -6,11 +6,8 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 08:56:26 by tdesmet           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/28 12:37:04 by tdesmet          ###   ########.fr       */
-=======
+/*   Updated: 2022/02/01 08:30:10 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 09:17:24 by tdesmet          ###   ########.fr       */
->>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,60 +54,25 @@ int	ft_check_med(t_pile **pile, t_pile *check, int size)
 int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cnt)
 {
 	int		new_pivot;
-<<<<<<< HEAD
 	int		size;
 	int		i;
-=======
->>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 	t_pile	*temp;
 
 	if (!pile)
 		return (0);
+	i = 0;
 	temp = *pile;
 	size = cnt->nb_p;
 	new_pivot = ft_search_med(pile, cnt->nb_p);
-	/*if (ft_check_sort(pile, cnt))
-	{
-		while (cnt->nb_p)
-		{
-			ft_rotate(pile, "ra\n");
-			cnt->nb_s++;
-			cnt->nb_p--;
-			cnt->nb_r--;
-		}
-		free(ft_pop(pivot));
-		return (0);
-	}*/
-	if (cnt->nb_p == 1)
-	{
-		ft_rotate(pile, "ra\n");
-		free(ft_pop(pivot));
-		cnt->nb_s++;
-		return (0);
-	}
-<<<<<<< HEAD
-	if (cnt->nb_p ==2)
-	{
-		ft_check_2_bis(pile, cnt);
-		free(ft_pop(pivot));
-		return (0);
-	}
-	if (cnt->nb_p ==3)
-	{
-		ft_check_3_bis(pile,pile_temp, cnt);
-		free(ft_pop(pivot));
-		return (0);
-	}
 	if (!(*pile_temp))
 	{
 		while (size--)
 		{
 			if ((*pile)->val == new_pivot)
 			{
-				//ft_putstr("pivot\n");
 				ft_push_pile(pivot, ft_new_pile((*pile)->val));
 				ft_push(pile_temp, pile, "pb\n");
-				ft_rotate(pile_temp, "rb\n");
+					ft_rotate(pile_temp, "rb\n");
 			}
 			else if ((*pile)->val > new_pivot)
 			{
@@ -139,18 +101,26 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		new_pivot = ft_search_med(pile_temp, cnt->nb_p);
 		cnt->nb_r = cnt->nb_p;
 		size = cnt->nb_p;
-		while (cnt->nb_p > 3)
+		while (cnt->nb_p > 4)
 		{
 			while (size--)
 			{
 				if ((*pile_temp)->val == new_pivot)
 				{
-					//ft_putstr("pivot\n");
 					ft_push_pile(pivot, ft_new_pile((*pile_temp)->val));
 					ft_push(pile, pile_temp, "pa\n");
 					ft_rotate(pile, "ra\n");
 					cnt->nb_p--;
 				}
+			/*	else if (ft_rotate_sort_temp(pile_temp, (*pile_temp)->val
+					&& new_pivot != ft_pile_last(*pile)->val))
+				{
+					ft_push(pile, pile_temp, "pa\n");
+					ft_rotate(pile, "ra\n");
+					cnt->nb_p--;
+					cnt->nb_r--;
+					cnt->nb_s++;
+				}*/
 				else if ((*pile_temp)->val > new_pivot)
 				{
 					ft_push(pile, pile_temp, "pa\n");
@@ -170,7 +140,6 @@ int	ft_push_pivot(t_pile **pile, t_pile **pile_temp, t_pile **pivot, s_index *cn
 		return (0);
 	}
 	return (cnt->nb_p);
-=======
 	ft_push_med(pile, pile_temp, new_pivot, cnt);
 	ft_push_pile(pivot, ft_new_pile((*pile_temp)->val));
 	cnt->nb_r--;
@@ -197,5 +166,4 @@ void	ft_push_med(t_pile **pile, t_pile **pile_temp, int new_pivot, s_index *cnt)
 	ft_push(pile_temp, pile, "pb\n");
 	while (i-- > 0)
 		ft_reverse_rotate(pile, "rra\n");
->>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 }

@@ -6,26 +6,21 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 07:55:31 by tdesmet           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/28 11:27:32 by tdesmet          ###   ########.fr       */
-=======
+/*   Updated: 2022/01/31 14:11:51 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/21 15:38:03 by tdesmet          ###   ########.fr       */
->>>>>>> 1eab80868c12352b9aa263f070939600c5fdd3af
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int	ft_rotate_sort(t_pile **pile, int j, int val)
+int	ft_rotate_sort(t_pile *pile, int j, int val)
 {
 	int		i;
 	t_pile	*temp;
 
 	i = 0;
 	if (!pile)
-		return (0);
-	if (!ft_pile_size(pile))
 		return (1);
-	temp = *pile;
+	temp = pile;
 	while (i <= j)
 	{
 		if (!temp)
