@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 07:58:53 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/31 15:29:01 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:07:28 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 09:00:04 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -49,9 +49,9 @@ int	main(int argc, char **argv)
 	else
 	{
 		a = ft_create_pile(argc, argv);
-		//aff(a);
+		aff(a);
 		sort2(a, b);
-		//aff(a);
+		aff(a);
 	}
 	ft_free_pile(b);
 	ft_free_pile(a);

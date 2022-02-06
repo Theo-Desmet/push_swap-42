@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 07:55:31 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/31 14:11:51 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/01 13:30:51 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/21 15:38:03 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -102,14 +102,11 @@ void	sort2(t_pile **pile, t_pile **pile_temp)
 	cnt->nb_p = cnt->nb_r;
 	pivot = malloc(sizeof(t_pile));
 	*pivot = NULL;
-	//aff(pile);
 	while (cnt->nb_s < ft_pile_size(pile))
 	{
 		cnt->nb_p = ft_push_pivot(pile, pile_temp, pivot, cnt);
 		while (*pile_temp)
 			ft_push(pile, pile_temp, "pa\n");
-		//aff(pile);
-		//aff(pivot);
 		cnt->nb_r = ft_pile_size(pile) - cnt->nb_s;
 		if (!(*pivot))
 			cnt->nb_p = cnt->nb_r;

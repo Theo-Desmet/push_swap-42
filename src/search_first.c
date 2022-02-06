@@ -6,40 +6,81 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 08:28:59 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/01 08:34:40 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:45:03 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_search_min(t_pile **pile, t_pile **pile_temp, s_index *cnt)
+#include "push_swap.h"
+
+int	ft_search_min(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
 {
-	int	first;
-	while (ft_rotate_sort(*pile, cnt->nb_r -1, (*pile)->val))
+	if (ft_search_first(a, pivot, cnt) || ft_search_second(a, pivot, cnt)
+		|| ft_search_third(a, b, pivot, cnt))
+		return (1);
+	if (cnt->nb_p == 4)
 	{
-		if (new_pivot == (*pile)->val)
+		ft_putstr("4.0");
+		return (0);
+	}
+	return (0);
+}
+
+int	ft_search_first(t_pile **a, t_pile **pivot, s_index *cnt)
+{
+	if (ft_rotate_sort(*a, cnt->nb_r -1, (*a)->val) && cnt->nb_r)
+	{
+		if (cnt->new_pivot == (*a)->val)
 			free(ft_pop(pivot));
-		ft_rotate(pile, "ra\n");
+		ft_rotate(a, "ra\n");
 		cnt->nb_s++;
 		cnt->nb_r--;
-		return (0);
+		cnt->nb_p--;
+		return (1);
 	}
-	while (ft_rotate_sort(*pile, cnt->nb_r - 3, (*pile)->next->val) && ft_rotate_sort((*pile)->next->next, cnt->nb_r - 3, (*pile)->val))
+	return (0);
+}
+
+int	ft_search_second(t_pile **a, t_pile **pivot, s_index *cnt)
+{
+	if (ft_rotate_sort(*a, cnt->nb_r - 3, (*a)->next->val) && cnt->nb_r
+		&& ft_rotate_sort((*a)->next->next, cnt->nb_r - 3, (*a)->val))
 	{
-		if (new_pivot == (*pile)->val || new_pivot == (*pile)->next->val)
+		if (cnt->new_pivot == (*a)->val
+			|| cnt->new_pivot == (*a)->next->val)
 			free(ft_pop(pivot));
-		ft_check_2_bis(pile);
-		cnt->nb_s+=2;
-		cnt->nb_r-=2;
-		return (0);
+		ft_check_2_bis(a);
+		cnt->nb_s += 2;
+		cnt->nb_r -= 2;
+		cnt->nb_p -= 2;
+		return (1);
 	}
-	while (ft_rotate_sort((*pile)->next->next->next, cnt->nb_r - 4, (*pile)->val)
-		&& ft_rotate_sort((*pile)->next->next->next, cnt->nb_r - 4, (*pile)->next->val)
-		&& ft_rotate_sort((*pile)->next->next->next, cnt->nb_r - 4, (*pile)->next->next->val))
+	return (0);
+}
+
+int	ft_search_third(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
+{
+	t_pile	*first;
+	t_pile	*second;
+	t_pile	*third;
+	t_pile	*last;
+
+	first = *a;
+	second = (*a)->next;
+	third = (*a)->next->next;
+	last = (*a)->next->next->next;
+	if (ft_rotate_sort(last, cnt->nb_r - 4, first->val) && cnt->nb_r
+		&& ft_rotate_sort(last, cnt->nb_r - 4, second->val)
+		&& ft_rotate_sort(last, cnt->nb_r - 4, third->val))
 	{
-		if (new_pivot == (*pile)->val || new_pivot == (*pile)->next->val || new_pivot == (*pile)->next->val)
+		if (cnt->new_pivot == first->val
+			|| cnt->new_pivot == second->val
+			|| cnt->new_pivot == third->val)
 			free(ft_pop(pivot));
-		ft_check_3_bis(pile, pile_temp);
-		cnt->nb_s+=3;
-		cnt->nb_r-=3;
-		return (0);
+		ft_check_3_bis(a, b);
+		cnt->nb_s += 3;
+		cnt->nb_r -= 3;
+		cnt->nb_p -= 3;
+		return (1);
 	}
+	return (0);
 }

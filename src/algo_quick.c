@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:41:03 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/31 14:31:17 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:40:39 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 08:55:54 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -57,65 +57,50 @@ void	ft_check_2_bis(t_pile **pile)
 /*
 void	ft_check_4(t_pile **a, t_pile **b)
 {
-	int	first = (*a)->val;
-	int	second = (*a)->next->val;
-	int	pre_last = (*a)->next->next->val;
-	int	last = (*a)->next->next->next->val;
-
-	if (first > second && first > pre_last && first > last)
+	int	fst = (*a)->val;
+	int	scd = (*a)->next->val;
+	int	thd = (*a)->next->next->val;
+	int	four = (*a)->next->next->next->val;
+	
+	if (fst > scd && fst > thd && fst > four)
 	{
 		ft_push(b, a, "pb\n");
 		ft_check_3_bis(a, b);
 		ft_push(a, b, "pa\n");
 		ft_rotate(a, "ra\n");
 	}
-	else if (second < first && second < pre_last && second < last)
+	if (fst < )
+	if (fst < scd && fst > thd && scd > thd)
+			ft_swap(a, "sa\n");
+	else if (four < thd && four < scd && four < fst)
 	{
-		ft_swap(a, "sa\n");
+		ft_push(b, a, "pb\n");
+		ft_push(b, a, "pb\n");
+		if (fst > scd && fst < thd && scd < thd)
+		{
+			ft_swap(b, "sb\n");
+			ft_swap(a, "sa\n");
+		}
+		else
+			ft_push(b, a, "pb\n");
 		ft_rotate(a, "ra\n");
-		ft_check_3_bis(a, b);
-	}
-	else
-	{
-		if (last > pre_last && last > second && last > first)
+		if (fst < scd && fst < thd && scd > thd)
 		{
-			ft_check_3_bis(a, b);
-			ft_rotate(a, "ra\n");
+			ft_swap(b, "sb\n");//2push a
+			ft_push(a, b, "pa\n");
 		}
-		else 
-		{
-			ft_push(b, a, "pb\n");
-			ft_push(b, a, "pb\n");
-			ft_rotate(a, "ra\n");
-			if (first > last)
-			{
-				ft_rotate(a, "ra\n");
-				ft_push(a, b, "pa\n");
-				ft_push(a, b, "pa\n");
-				ft_rotate(a, "ra\n");
-			}
-			else
-			{
-				ft_swap(b, "sb\n");
-				ft_push(a, b, "pa\n");
-				ft_rotate(a, "ra\n");
-				ft_rotate(a, "ra\n");
-				ft_push(a, b, "pa\n");
-			}
-			ft_rotate(a, "ra\n");
-		}
+		if (fst < scd && fst < thd && scd < thd)
+			ft_push(a, b, "pa\n");
+		ft_push(a, b, "pa\n");
+		ft_push(a, b, "pa\n");
+		ft_rotate(a, "ra\n");
+		ft_rotate(a, "ra\n");
+		ft_rotate(a, "ra\n");
 	}
 }
-*/ 
+*/
 void	ft_check_3(t_pile **a)
 {
-	if ((*a)->val < (*a)->next->val && (*a)->val < (*a)->next->next->val
-		&& (*a)->next->val > (*a)->next->next->val)
-	{
-		ft_rotate(a, "ra\n");
-		ft_swap(a, "sa\n");
-		ft_reverse_rotate(a, "rra\n");
-	}
 	if ((*a)->val > (*a)->next->val && (*a)->next->val < (*a)->next->next->val)
 	{
 		if ((*a)->val < (*a)->next->next->val)
@@ -136,19 +121,6 @@ void	ft_check_3(t_pile **a)
 
 void	ft_check_3_bis(t_pile **a, t_pile **b)
 {
-	if ((*a)->val < (*a)->next->val && (*a)->val < (*a)->next->next->val)
-	{
-		if ((*a)->next->val > (*a)->next->next->val)
-		{
-			ft_rotate(a, "ra\n");
-			ft_swap(a, "sa\n");
-		}
-		else
-			ft_rotate(a, "ra\n");
-		ft_rotate(a, "ra\n");
-		ft_rotate(a, "ra\n");
-		return ;
-	}
 	if ((*a)->val > (*a)->next->val && (*a)->val > (*a)->next->next->val
 		&& (*a)->next->val > (*a)->next->next->val)
 	{
@@ -160,11 +132,6 @@ void	ft_check_3_bis(t_pile **a, t_pile **b)
 		ft_rotate(a, "ra\n");
 		return ;
 	}
-	ft_check_3_1_bis(a, b);
-}
-
-void	ft_check_3_1_bis(t_pile **a, t_pile **b)
-{
 	if((*a)->val > (*a)->next->val && (*a)->next->val < (*a)->next->next->val
 		&& (*a)->val < (*a)->next->next->val)
 	{
@@ -174,6 +141,11 @@ void	ft_check_3_1_bis(t_pile **a, t_pile **b)
 		ft_rotate(a, "ra\n");
 		return ;
 	}
+	ft_check_3_1_bis(a, b);
+}
+
+void	ft_check_3_1_bis(t_pile **a, t_pile **b)
+{
 	if((*a)->val > (*a)->next->val && (*a)->next->val < (*a)->next->next->val
 		&& (*a)->val > (*a)->next->next->val)
 	{
