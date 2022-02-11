@@ -37,11 +37,11 @@ $(NAME): begin $(OBJ)
 clean:
 	@make -C $(LIB_PATH) fclean
 	@rm -f $(OBJ)
-	@echo "\033[101;31msuppression des fichier *.o de push_swap\033[0m"
+	@echo "\033[101;30msuppression des fichier *.o de push_swap\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "\033[101;31msuppression de l'executable push_spawp\033[0m"
+	@echo "\033[101;30msuppression de l'executable push_spawp\033[0m"
 
 re: fclean all
 

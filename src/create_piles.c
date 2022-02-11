@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 10:46:22 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/01/28 11:23:45 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/11 15:19:02 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ t_pile	**ft_create_pile(int argc, char **argv)
 	j = 0;
 	pile = malloc(sizeof(t_pile));
 	*pile = NULL;
-	if (!argv)
-		return (NULL);
 	while (i - 1 > 0)
 	{
 		tab = ft_split(argv[i - 1], ' ');

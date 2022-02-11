@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 08:56:26 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/01 16:40:58 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/11 13:48:00 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 09:17:24 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ int	ft_check_med(t_pile **pile, t_pile *check, int size)
 		return (1);
 }
 
-int	ft_push_pivot(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
+int	ft_push_pivot(t_pile **a, t_pile **b, t_pile **pivot, t_index *cnt)
 {
 	int		size;
 	int		i;

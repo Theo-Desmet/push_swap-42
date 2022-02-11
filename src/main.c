@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 07:58:53 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/01 15:07:28 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/11 15:30:36 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 09:00:04 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 int	ft_pile_size(t_pile **pile)
 {
 	t_pile	*temp;
-	int	i;
+	int		i;
 
 	if (!pile || !(*pile))
 		return (0);
@@ -42,16 +42,26 @@ int	main(int argc, char **argv)
 	t_pile	**a;
 	t_pile	**b;
 
+	a = malloc(sizeof(t_pile));
 	b = malloc(sizeof(t_pile));
+	*a = NULL;
 	*b = NULL;
 	if (check_args(argc, argv) == 0)
+	{
+		ft_free_pile(b);
+		ft_free_pile(a);
 		return (0);
+	}
+	a = ft_create_pile(argc, argv);
+	if (ft_pre_sort(a))
+	{
+		ft_free_pile(b);
+		ft_free_pile(a);
+		return (0);
+	}
 	else
 	{
-		a = ft_create_pile(argc, argv);
-		aff(a);
 		sort2(a, b);
-		aff(a);
 	}
 	ft_free_pile(b);
 	ft_free_pile(a);

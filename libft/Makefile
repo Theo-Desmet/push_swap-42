@@ -6,7 +6,7 @@
 #    By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 07:33:29 by tdesmet           #+#    #+#              #
-#    Updated: 2022/01/17 07:28:53 by tdesmet          ###   ########.fr        #
+#    Updated: 2022/02/11 14:07:24 by tdesmet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,11 +80,11 @@ ${NAME}: begin ${OBJ}
 
 clean:
 	@${RM} ${OBJ}
-	@echo "\033[101;31msuppression des fichier *.o de la libft\033[0m"
+	@echo "\033[101;30msuppression des fichier *.o de la libft\033[0m"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "\033[101;31msuppression de la librairie libft\033[0m"
+	@echo "\033[101;30msuppression de la librairie libft\033[0m"
 
 re: fclean all
 

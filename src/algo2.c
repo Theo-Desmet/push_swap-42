@@ -6,13 +6,13 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:03:22 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/01 17:05:37 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/11 15:14:12 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_first_split(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
+void	ft_first_split(t_pile **a, t_pile **b, t_pile **pivot, t_index *cnt)
 {
 	int	size;	
 	int	i;
@@ -40,7 +40,7 @@ void	ft_first_split(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
 	ft_first_split2(a, b, i, cnt);
 }
 
-void	ft_first_split2(t_pile **a, t_pile **b, int i, s_index *cnt)
+void	ft_first_split2(t_pile **a, t_pile **b, int i, t_index *cnt)
 {
 	ft_reverse_rotate(b, "rrb\n");
 	if (cnt->nb_s != 0)
@@ -55,7 +55,7 @@ void	ft_first_split2(t_pile **a, t_pile **b, int i, s_index *cnt)
 	cnt->nb_r = cnt->nb_p;
 }
 
-void	ft_next_split(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
+void	ft_next_split(t_pile **a, t_pile **b, t_pile **pivot, t_index *cnt)
 {
 	int	size;
 
@@ -74,15 +74,6 @@ void	ft_next_split(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
 			ft_push(a, b, "pa\n");
 			cnt->nb_p--;
 		}
-		else if (ft_rotate_sort(*b, cnt->nb_r -1, (*b)->val)
-				&& ft_pile_last(*a)->val != cnt->new_pivot)
-		{
-			ft_push(a, b, "pa\n");
-			ft_rotate(a, "ra\n");
-			cnt->nb_p--;
-			cnt->nb_s++;
-			
-		}
 		else
 			ft_rotate(b, "rb\n");
 		cnt->nb_r--;
@@ -91,4 +82,20 @@ void	ft_next_split(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
 	cnt->new_pivot = ft_search_med(b, cnt->nb_p);
 	cnt->nb_r = cnt->nb_p;
 	size = cnt->nb_p;
+}
+
+int ft_pre_sort(t_pile **a)
+{
+	t_pile	*temp;
+
+	if (!(*a))
+		return (1);
+	temp = *a;
+	while (temp)
+	{
+		if (temp->val > temp->next->val)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
 }

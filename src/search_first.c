@@ -6,26 +6,21 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 08:28:59 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/01 16:45:03 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/11 13:48:42 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_search_min(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
+int	ft_search_min(t_pile **a, t_pile **b, t_pile **pivot, t_index *cnt)
 {
 	if (ft_search_first(a, pivot, cnt) || ft_search_second(a, pivot, cnt)
 		|| ft_search_third(a, b, pivot, cnt))
 		return (1);
-	if (cnt->nb_p == 4)
-	{
-		ft_putstr("4.0");
-		return (0);
-	}
 	return (0);
 }
 
-int	ft_search_first(t_pile **a, t_pile **pivot, s_index *cnt)
+int	ft_search_first(t_pile **a, t_pile **pivot, t_index *cnt)
 {
 	if (ft_rotate_sort(*a, cnt->nb_r -1, (*a)->val) && cnt->nb_r)
 	{
@@ -40,7 +35,7 @@ int	ft_search_first(t_pile **a, t_pile **pivot, s_index *cnt)
 	return (0);
 }
 
-int	ft_search_second(t_pile **a, t_pile **pivot, s_index *cnt)
+int	ft_search_second(t_pile **a, t_pile **pivot, t_index *cnt)
 {
 	if (ft_rotate_sort(*a, cnt->nb_r - 3, (*a)->next->val) && cnt->nb_r
 		&& ft_rotate_sort((*a)->next->next, cnt->nb_r - 3, (*a)->val))
@@ -57,7 +52,7 @@ int	ft_search_second(t_pile **a, t_pile **pivot, s_index *cnt)
 	return (0);
 }
 
-int	ft_search_third(t_pile **a, t_pile **b, t_pile **pivot, s_index *cnt)
+int	ft_search_third(t_pile **a, t_pile **b, t_pile **pivot, t_index *cnt)
 {
 	t_pile	*first;
 	t_pile	*second;
