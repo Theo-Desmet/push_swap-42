@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:54:51 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/11 14:51:38 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/14 08:23:41 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,17 @@ int	check_doublons_split(char **tab)
 	return (1);
 }
 
-int	ft_error(void)
+int	ft_error(char **tab)
 {
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 	write(2, "Error", 5);
 	return (0);
 }

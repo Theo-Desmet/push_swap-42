@@ -12,7 +12,8 @@ SRC =	./src/main.c\
 	./src/algo_quick.c\
 	./src/median.c\
 	./src/search_first.c\
-	./src/algo2.c
+	./src/algo2.c\
+	./src/algo_low.c
 
 LIB_PATH = libft/
 

@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 07:58:53 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/11 15:30:36 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/14 09:10:24 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/24 09:00:04 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -32,7 +32,7 @@ int	ft_pile_size(t_pile **pile)
 
 void	ft_free_pile(t_pile **pile)
 {
-	while ((*pile))
+	while (*pile)
 		free(ft_pop(pile));
 	free(pile);
 }
@@ -42,27 +42,26 @@ int	main(int argc, char **argv)
 	t_pile	**a;
 	t_pile	**b;
 
-	a = malloc(sizeof(t_pile));
 	b = malloc(sizeof(t_pile));
-	*a = NULL;
 	*b = NULL;
-	if (check_args(argc, argv) == 0)
+	if (argc == 1 || check_args(argc, argv) == 0)
 	{
 		ft_free_pile(b);
-		ft_free_pile(a);
 		return (0);
 	}
 	a = ft_create_pile(argc, argv);
+	//aff(a);
 	if (ft_pre_sort(a))
 	{
 		ft_free_pile(b);
 		ft_free_pile(a);
 		return (0);
 	}
+	else if (argc <= 5)
+		ft_algo_low(a, argc);	
 	else
-	{
 		sort2(a, b);
-	}
+	//aff(a);
 	ft_free_pile(b);
 	ft_free_pile(a);
 	return (0);

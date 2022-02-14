@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:03:22 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/11 15:14:12 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/14 07:48:34 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ int ft_pre_sort(t_pile **a)
 	if (!(*a))
 		return (1);
 	temp = *a;
-	while (temp)
+	while (temp->next)
 	{
 		if (temp->val > temp->next->val)
-			return (1);
+			return (0);
 		temp = temp->next;
 	}
-	return (0);
+	return (1);
 }

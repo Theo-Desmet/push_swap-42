@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 10:48:45 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/11 15:13:35 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/14 08:43:42 by tdesmet          ###   ########.fr       */
 /*   Updated: 2022/01/21 17:11:47 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -36,9 +36,11 @@ struct s_index
 
 void	aff(t_pile **pile);
 void	ft_check_3(t_pile **a);
+void	ft_check_2(t_pile **a);
 void	ft_free_pile(t_pile **pile);
 void	ft_check_2_bis(t_pile **pile);
 void	ft_swap(t_pile **pile, char *str);
+void	ft_algo_low(t_pile **a, int argc);
 void	ft_rotate(t_pile **pile, char *str);
 void	ft_check_3_bis(t_pile **a, t_pile **b);
 void	ft_check_3_1_bis(t_pile **a, t_pile **b);
@@ -60,7 +62,7 @@ t_pile	*ft_pile_last(t_pile *pile);
 t_pile	**ft_create_pile(int cont, char **str);
 t_pile	**sort(t_pile **pile, t_pile **pile_temp);
 
-int		ft_error(void);
+int		ft_error(char **tab);
 int		check_digit(char *str);
 int		ft_str_size(char *str);
 int		ft_pre_sort(t_pile **a);
