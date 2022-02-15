@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:03:22 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/14 07:48:34 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:13:41 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_next_split(t_pile **a, t_pile **b, t_pile **pivot, t_index *cnt)
 	size = cnt->nb_p;
 }
 
-int ft_pre_sort(t_pile **a)
+int	ft_pre_sort(t_pile **a)
 {
 	t_pile	*temp;
 

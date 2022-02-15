@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:54:51 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/14 08:23:41 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:09:25 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_str_size(char *str)
 		return (0);
 	i = 0;
 	j = 0;
-	if ((str[i] == '-' || str[i] == '+') && str[i + 1] == 0)
+	if (((str[i] == '-' || str[i] == '+') && str[i + 1] == 0)
+		|| ((str[i] == '-' || str[i] == '+') && str[i + 1] == '0'))
 		return (1);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -67,11 +68,8 @@ int	check_doublons_split(char **tab)
 	return (1);
 }
 
-int	ft_error(char **tab)
+int	ft_error(char **tab, int i)
 {
-	int	i;
-
-	i = 0;
 	while (tab[i])
 	{
 		free(tab[i]);

@@ -6,7 +6,7 @@
 /*   By: tdesmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 08:05:27 by tdesmet           #+#    #+#             */
-/*   Updated: 2022/02/14 08:19:34 by tdesmet          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:06:09 by tdesmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ int	check_args(int argc, char **argv)
 	{
 		tab = ft_split(argv[i], ' ');
 		if (check_doublons_split(tab) == 0)
-			return (ft_error(tab));
+			return (ft_error(tab, 0));
 		while (tab[j])
 		{
 			if (check_digit(tab[j]) && check_doublons(tab[j], argc, argv, i))
 				free(tab[j]);
 			else
-				return (ft_error(tab));
+				return (ft_error(tab, j));
 			j++;
 		}
 		free(tab);
